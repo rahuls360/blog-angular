@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row" *ngIf="allBlogs">
+    <div class="col-md-4" *ngFor="let blog of allBlogs">
+      <h3>{{blog.title}}</h3>
+      <div [innerHTML]="blog.content"></div>
+      <small>by <a href="#">{{blog.author}}</a> on {{blog.createdOn | date}}</small>
+      <br>
+      <a class="btn btn-primary" [routerLink]="['/blog', blog.id]">View</a>
+    </div>
+  </div>
+</div>
