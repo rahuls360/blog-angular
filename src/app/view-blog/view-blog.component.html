@@ -1,7 +1,7 @@
-<div>
+<div *ngIf="blog">
   <h3>{{blog.title}}</h3>
-  <p>{{blog.content}}</p>
+  <p>{{blog.bodyHtml}}</p>
   <br>
-  <span>by {{blog.author}} on {{blog.createdOn | date}}</span>
+  <span>by {{blog.author}} on {{blog.created | date}}</span>
 
 </div>

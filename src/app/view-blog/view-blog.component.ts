@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../blog.service';
+import { BlogHttpService } from '../blog-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -13,13 +13,23 @@ export class ViewBlogComponent implements OnInit {
   blog;
   id;
 
-  constructor(private _route: ActivatedRoute, private router: Router, public blogService: BlogService) {
+  constructor(private _route: ActivatedRoute, private router: Router, public blogHttpService: BlogHttpService) {
 
   }
 
   ngOnInit() {
     this.id = this._route.snapshot.paramMap.get('ID');
-    this.blog = this.blogService.getBlogByID(this.id);
+    console.log(this.id);
+    this.blog = this.blogHttpService.getBlogByID(this.id).subscribe(
+      data => {
+        console.log(data);
+        this.blog = data["data"];
+      },
+      error => {
+        console.log(error);
+        console.log(error.errmessage);
+      }
+    );
   }
 
 }
