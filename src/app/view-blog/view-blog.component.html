@@ -4,4 +4,7 @@
   <br>
   <span>by {{blog.author}} on {{blog.created | date}}</span>
 
+  <a href="blog/{{id}}/edit" class="btn btn-warning">Edit</a>
+  <a (click)="deleteBlog()" class="btn btn-danger">Delete</a>
+
 </div>

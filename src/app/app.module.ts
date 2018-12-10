@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { BlogService } from './blog.service';
 import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { BlogHttpService } from './blog-http.service';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
 
 @NgModule({
   declarations: [
@@ -20,17 +22,20 @@ import { BlogHttpService } from './blog-http.service';
     AboutComponent,
     NotFoundComponent,
     CreateBlogComponent,
-    ViewBlogComponent
+    ViewBlogComponent,
+    EditBlogComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
       { path: 'create', component: CreateBlogComponent },
       { path: 'blog/:ID', component: ViewBlogComponent },
+      { path: 'blog/:ID/edit', component: EditBlogComponent },
       { path: '**', component: NotFoundComponent }
     ])
   ],

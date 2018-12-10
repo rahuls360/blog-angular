@@ -32,4 +32,15 @@ export class ViewBlogComponent implements OnInit {
     );
   }
 
+  deleteBlog() {
+    this.blogHttpService.deleteBlog(this.id).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log("error", error);
+      }
+    )
+  }
+
 }

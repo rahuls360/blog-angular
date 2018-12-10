@@ -28,13 +28,34 @@ export class BlogHttpService {
   getBlogByID(id) {
     let url = this.baseUrl + "/view/" + id + "?authToken=" + this.authToken;
     let response = this._http.get(url);
-    console.log(url);
+    // console.log(url);
     return response;
   }
 
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);
+  }
+
+  createBlog(blogData) {
+    let url = this.baseUrl + "/create?authToken=" + this.authToken;
+    console.log(url);
+    let response = this._http.post(url, blogData);
+    return response;
+  }
+
+  editBlog(id, blogData) {
+    let url = this.baseUrl + "/" + id + "/edit?" + this.authToken;
+    console.log(url);
+    let response = this._http.put(url, blogData);
+    return response;
+  }
+
+  deleteBlog(id) {
+    let url = this.baseUrl + "/" + id + "/delete?authToken=" + this.authToken;
+    let response = this._http.post(url, id);
+    console.log(url, id, "Deleted");
+    return response;
   }
 
 }
