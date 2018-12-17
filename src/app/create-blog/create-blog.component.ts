@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogHttpService } from '../blog-http.service';
 
+
+
 @Component({
   selector: 'app-create-blog',
   templateUrl: './create-blog.component.html',
@@ -19,7 +21,6 @@ export class CreateBlogComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   createBlog() {
