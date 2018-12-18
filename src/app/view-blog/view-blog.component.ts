@@ -3,19 +3,20 @@ import { BlogHttpService } from '../blog-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 
 @Component({
   selector: 'app-view-blog',
   templateUrl: './view-blog.component.html',
-  styleUrls: ['./view-blog.component.css']
+  styleUrls: ['./view-blog.component.css'],
 })
 export class ViewBlogComponent implements OnInit {
 
   blog;
   id;
 
-  constructor(private _route: ActivatedRoute, private router: Router, public blogHttpService: BlogHttpService, private toastr: ToastrService) {
+  constructor(private _route: ActivatedRoute, private router: Router, public blogHttpService: BlogHttpService, private toastr: ToastrService, public location: Location) {
 
   }
 
@@ -43,6 +44,10 @@ export class ViewBlogComponent implements OnInit {
         console.log("error", error);
       }
     )
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
