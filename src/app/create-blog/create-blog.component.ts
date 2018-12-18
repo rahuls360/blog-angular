@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogHttpService } from '../blog-http.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 
 
 
@@ -17,7 +20,7 @@ export class CreateBlogComponent implements OnInit {
   blogBody;
   category;
 
-  constructor(public blogHttpService: BlogHttpService) {
+  constructor(public blogHttpService: BlogHttpService, private toastr: ToastrService, private router: Router) {
   }
 
   ngOnInit() {
@@ -35,6 +38,8 @@ export class CreateBlogComponent implements OnInit {
       data => {
         console.log("blog created");
         console.log(data);
+        this.toastr.success('Blog is created', 'Congrats');
+        this.router.navigate(['/home']);
       },
       error => {
         console.log(error);

@@ -45,7 +45,7 @@ export class BlogHttpService {
   }
 
   editBlog(id, blogData) {
-    let url = this.baseUrl + "/" + id + "/edit?" + this.authToken;
+    let url = this.baseUrl + "/" + id + "/edit?authToken=" + this.authToken;
     console.log(url);
     let response = this._http.put(url, blogData);
     return response;

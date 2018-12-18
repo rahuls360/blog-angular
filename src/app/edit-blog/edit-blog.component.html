@@ -1,3 +1,13 @@
-<p>
-  edit-blog works!
-</p>
+<div class="container" *ngIf="blog">
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="editBlog()">
+        <input class="form-control" type="text" placeholder="Title" name="title" [(ngModel)]="blog.title">
+        <input class="form-control" type="text" placeholder="Description" name="description" [(ngModel)]="blog.description">
+        <input class="form-control" type="text" placeholder="Blog Body" name="blogBody" [(ngModel)]="blog.bodyHtml">
+        <input class="form-control" type="text" placeholder="Category" name="category" [(ngModel)]="blog.category">
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
+</div>

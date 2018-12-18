@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BlogHttpService } from '../blog-http.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forEach } from '@angular/router/src/utils/collection';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-view-blog',
@@ -13,7 +15,7 @@ export class ViewBlogComponent implements OnInit {
   blog;
   id;
 
-  constructor(private _route: ActivatedRoute, private router: Router, public blogHttpService: BlogHttpService) {
+  constructor(private _route: ActivatedRoute, private router: Router, public blogHttpService: BlogHttpService, private toastr: ToastrService) {
 
   }
 
@@ -22,7 +24,6 @@ export class ViewBlogComponent implements OnInit {
     console.log(this.id);
     this.blog = this.blogHttpService.getBlogByID(this.id).subscribe(
       data => {
-        console.log(data);
         this.blog = data["data"];
       },
       error => {
@@ -36,6 +37,7 @@ export class ViewBlogComponent implements OnInit {
     this.blogHttpService.deleteBlog(this.id).subscribe(
       data => {
         console.log(data);
+        this.toastr.success('Blog is deleted', 'Congrats');
       },
       error => {
         console.log("error", error);
